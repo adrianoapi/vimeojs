@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Acadêmico Sandvik</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+                <div align="right">
+                    <a class="btn btn-info" href="#" style="display:none">
+                        <span class="glyphicon glyphicon-test"></span> Quizz</a>
+                </div>
+                <br>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+
+                <iframe id="player" width="100%" height="500" src="https://player.vimeo.com/video/245804159" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+                <br>
+                <div align="right">
+                    <a class="btn btn-info" href="#" style="display:none">
+                        <span class="glyphicon glyphicon-test"></span> Quizz</a>
+                </div>
+
+
+                <script type="text/javascript">
+
+                    var iframe = document.querySelector('iframe'),
+                            player = new Vimeo.Player(iframe),
+                            progress;
+
+                    console.log(progress);
+
+                    function toggleTestButton() {
+                        console.log(progress);
+                        if (progress) {
+                            if (progress.percent.toString().substring(2) > 10) {
+                                $(".btn-info").show();
+                            }
+                        }
+                    }
+
+                    player.on('timeupdate', function (e) {
+                        if (typeof (e) === "object") {
+                            progress = e;
+                            toggleTestButton();
+                        }
+                    });
+
+                    setInterval(function () {
+                        updateWebinarProgress();
+                    }, 5000);
+
+                    $(window).bind('beforeunload', function (e) {
+                        updateWebinarProgress();
+                    });
+
+                </script>
+
+                </body>
+                </html>
