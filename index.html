@@ -8,75 +8,71 @@
         <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
     </head>
     <body>
-        <div class="container">
-                <div align="right">
-                    <a class="btn btn-info" href="#" style="display:none">
-                        Quizz</a>
-                </div>
-                <br>
-                <script src="https://player.vimeo.com/api/player.js"></script>
-                <br>
-				<div id="made-in-ny"></div>
-				
-                <div align="right">
-                    <a class="btn btn-info" href="#" style="display:none">
-                       Quizz</a>
-                </div>
+            <div align="right">
+                <a class="btn btn-info" href="#" style="display:none">
+                    Quizz</a>
+            </div>
+            <br>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+            <br>
+            <div id="made-in-ny"></div>
+
+            <div align="right">
+                <a class="btn btn-info" href="#" style="display:none">
+                    Quizz</a>
+            </div>
 
 
-                <script type="text/javascript">
-				
-				//github
-				//https://github.com/vimeo/player.js/
+            <script type="text/javascript">
 
-				var options = {
-        id: 59777392,
-        width: 640,
-        loop: true
-    };
-	
+                //github
+                //https://github.com/vimeo/player.js/
 
+                var options = {
+                    id: 59777392,
+                    width: 640,
+                    loop: true
+                };
 
-				
-                    var iframe = document.querySelector('iframe'),
-                            player = new Vimeo.Player('made-in-ny',options),
-                            progress;
+                var iframe = document.querySelector('iframe'),
+                        player = new Vimeo.Player('made-in-ny', options),
+                        progress;
 
+                console.log(progress);
+
+                player.on('play', function () {
+                    console.log('played the video!');
+                });
+
+                function toggleTestButton() {
                     console.log(progress);
-					
-						player.on('play', function() {
-    console.log('played the video!');
-});
-
-                    function toggleTestButton() {
-                        console.log(progress);
-                        if (progress) {
-                            if (progress.percent.toString().substring(2) > 10) {
-                                $(".btn-info").show();
-                            }
+                    if (progress) {
+                        if (progress.percent.toString().substring(2) > 10) {
+                            $(".btn-info").show();
                         }
                     }
+                }
 
-                    player.on('timeupdate', function (e) {
-                        if (typeof (e) === "object") {
-                            progress = e;
-                            toggleTestButton();
-                        }
-                    });
+                player.on('timeupdate', function (e) {
+                    if (typeof (e) === "object") {
+                        progress = e;
+                        toggleTestButton();
+                    }
+                });
 
-                    setInterval(function () {
-                        checkStatus();
-                    }, 5000);
+                setInterval(function () {
+                    checkStatus();
+                }, 5000);
 
-                    $(window).bind('beforeunload', function (e) {
-                        checkStatus();
-                    });
-					
-					function checkStatus(){
-					//ajax
-					}
+                $(window).bind('beforeunload', function (e) {
+                    checkStatus();
+                });
 
-                </script>
+                function checkStatus() {
+                    //ajax
+                }
 
-                </body>
-                </html>
+            </script>
+
+    </body>
+</html>
