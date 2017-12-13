@@ -1,78 +1,53 @@
-
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+        <title>Vimeo</title>
+        <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="src/jquery.vimeo.api.js"></script>
+
     </head>
     <body>
-            <div align="right">
-                <a class="btn btn-info" href="#" style="display:none">
-                    Quizz</a>
-            </div>
-            <br>
-            <script src="https://player.vimeo.com/api/player.js"></script>
-            <br>
-            <div id="made-in-ny"></div>
 
-            <div align="right">
-                <a class="btn btn-info" href="#" style="display:none">
-                    Quizz</a>
-            </div>
+        <!-- Example Vimeo Video Embed -->
+        <iframe width="1200" height="675" wmode="transparent" id="video" src=""></iframe>
+        <button type="button" id="59777392" onclick="imgClick(this)">59777392</button><br>
+        <button type="button" id="245597164" onclick="imgClick(this)">245597164</button>
 
+        <script type="text/javascript">
+            function imgClick(value) {
+                var id = value.id;
+                
+                $(document).ready(function ($) {
 
-            <script type="text/javascript">
-
-                //github
-                //https://github.com/vimeo/player.js/
-
-                var options = {
-                    id: 59777392,
-                    width: 640,
-                    loop: true
-                };
-
-                var iframe = document.querySelector('iframe'),
-                        player = new Vimeo.Player('made-in-ny', options),
-                        progress;
-
-                console.log(progress);
-
-                player.on('play', function () {
-                    console.log('played the video!');
-                });
-
-                function toggleTestButton() {
-                    console.log(progress);
-                    if (progress) {
-                        if (progress.percent.toString().substring(2) > 10) {
-                            $(".btn-info").show();
+                    function loadIframe(iframeName, url) {
+                        var $iframe = $('#video');
+                        if ($iframe.length) {
+                            $iframe.attr('src', "https://player.vimeo.com/video/" + id + "?background=0&title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1&amp;api=1&amp;player_id=player_1&amp;hd=1");
+                            return false;
                         }
+                        return true;
                     }
-                }
 
-                player.on('timeupdate', function (e) {
-                    if (typeof (e) === "object") {
-                        progress = e;
-                        toggleTestButton();
-                    }
+                    loadIframe();
+
+                    $("#video").vimeo("play").on("play", function (e) {
+                        console.log("play event was triggered");
+                    })
+                            .on("pause", function (e) {
+                                console.log("pause event was triggered");
+                            })
+                            .on("playProgress", function (event, data) {
+                                console.log(data.percent);
+                            })
+                            .on("finish", function (e) {
+                                vid.vimeo("unload");
+                                console.log("Finished event triggere");
+
+                            });
+
                 });
 
-                setInterval(function () {
-                    checkStatus();
-                }, 5000);
-
-                $(window).bind('beforeunload', function (e) {
-                    checkStatus();
-                });
-
-                function checkStatus() {
-                    //ajax
-                }
-
-            </script>
-
+            }
+        </script>
     </body>
 </html>

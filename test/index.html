@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    </head>
+    <body>
+
+        <script src="https://player.vimeo.com/api/player.js"></script>
+        <br>
+        <div id="made-in-ny"></div>
+
+        <div align="right">
+            <a class="btn btn-info" href="#" style="display:none">
+                Quizz</a>
+        </div>
+
+        <button type="button" id="59777392" onclick="imgClick(this)">59777392</button><br>
+        <button type="button" id="245597164" onclick="imgClick(this)">245597164</button>
+        <script type="text/javascript">
+
+            //github
+            //https://github.com/vimeo/player.js/
+
+
+            function imgClick(value) {
+                var id = value.id;
+                var options = {
+                    id: id,
+                    width: 640,
+                    loop: true
+                };
+                jQuery('#asssaaa').hide();  //hide image to play the video
+                var ifrm = document.createElement("iframe");
+                ifrm.setAttribute("src", "https://player.vimeo.com/video/" + id + "?autoplay=1");
+                ifrm.style.width = "496px";
+                ifrm.style.height = "277px";
+                // add rest of your values
+                ifrm.frameborder = 0;
+//                document.getElementById("made-in-ny").appendChild(ifrm);  //append it to your parent div 
+                $("#made-in-ny").html(ifrm);
+
+
+                setInterval(function () {
+                    ifrm.frameborder
+                }, 900);
+
+
+
+                return false;
+            }
+
+
+
+        </script>
+
+    </body>
+</html>

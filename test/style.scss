@@ -1,0 +1,89 @@
+// all of this is for the demo. you can ignore.
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300);
+body { 
+  background: white; 
+  color: #111;
+  line-height:1.6;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.2);
+}
+header { 
+  background: #FFBB00;
+  margin-bottom: 3em;
+  padding: 4em 0 2em; 
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0px 0px 12px 4px rgba(0,0,0,0.1);
+  h1 {
+    margin-bottom: 1em;
+  }
+  p { margin: 0; }
+}
+
+footer {
+  padding: 2em 0;
+  margin-top: 2em; 
+  background: #111;
+  color: white;
+  text-shadow: none; 
+  ul { margin: 0; padding-left: 1.5em; }
+  h2 { margin-bottom: 1em; margin-top: 0; }
+}
+h1 { 
+  font-weight: 300; 
+  line-height: 1.2;
+  margin: 0 0 1.5em;
+}
+a { color: #ffbb00; text-decoration: none; }
+
+iframe {
+  margin: 2em auto;
+  width: 100%;
+  display: block;
+}
+iframe, pre {
+  box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.1);
+}
+
+code { 
+  padding: 0.15em 0.25em 0.25em; 
+  margin-top: -0.3em;
+  display: inline-block;
+  font-size: 0.8em; 
+  border-radius: 2px; 
+  line-height: 1;
+  background: #222;
+}
+
+pre, code { 
+  color: #FFBB00;
+  text-shadow: none;
+}
+
+pre {
+  font-size: 12px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em;
+  box-sizing: border-box;
+  background: #111;
+}
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+  &::after { content: ''; display: table; clear: both; }
+}
+
+.col, .col-full {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0px 10px;
+}
+
+@media (min-width: 1040px) {
+  .col { float: left; width: 50%; padding: 0 10px 2em; }
+  .container { width: 1040px; }
+}
+
