@@ -16,36 +16,33 @@
         <script type="text/javascript">
             function imgClick(value) {
                 var id = value.id;
-                
-                $(document).ready(function ($) {
 
-                    function loadIframe(iframeName, url) {
-                        var $iframe = $('#video');
-                        if ($iframe.length) {
-                            $iframe.attr('src', "https://player.vimeo.com/video/" + id + "?background=0&title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1&amp;api=1&amp;player_id=player_1&amp;hd=1");
-                            return false;
-                        }
-                        return true;
+                function loadIframe(iframeName, url) {
+                    var $iframe = $('#video');
+                    if ($iframe.length) {
+                        $iframe.attr('src', "https://player.vimeo.com/video/" + id + "?background=0&title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;autoplay=1&amp;api=1&amp;player_id=player_1&amp;hd=1");
+                        return false;
                     }
+                    return true;
+                }
 
-                    loadIframe();
+                loadIframe();
 
-                    $("#video").vimeo("play").on("play", function (e) {
-                        console.log("play event was triggered");
-                    })
-                            .on("pause", function (e) {
-                                console.log("pause event was triggered");
-                            })
-                            .on("playProgress", function (event, data) {
-                                console.log(data.percent);
-                            })
-                            .on("finish", function (e) {
-                                vid.vimeo("unload");
-                                console.log("Finished event triggere");
+                $("#video").vimeo("play").on("play", function (e) {
+                    console.log("play event was triggered");
+                })
+                        .on("pause", function (e) {
+                            console.log("pause event was triggered");
+                        })
+                        .on("playProgress", function (event, data) {
+                            console.log(data.percent);
+                        })
+                        .on("finish", function (e) {
+                            vid.vimeo("unload");
+                            console.log("Finished event triggere");
 
-                            });
+                        });
 
-                });
 
             }
         </script>
